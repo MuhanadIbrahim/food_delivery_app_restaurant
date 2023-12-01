@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:food_delivery_app_restaurant/domain/restaurant_entity.dart';
 
 class MyRestaurant extends Equatable {
   final String name;
