@@ -4,7 +4,7 @@ import 'package:food_delivery_app_restaurant/domain/restaurant.dart';
 abstract class RestaurantRepository {
   Stream<User?> get user;
 
-  Future<MyRestaurant> signUp(MyRestaurant restaurant, String password);
+  Future<MyRestaurant> signUp(MyRestaurant myRestaurant, String password);
 
   Future<bool> signIn(String email, String password);
 
