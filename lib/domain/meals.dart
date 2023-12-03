@@ -7,6 +7,7 @@ class MyMeals extends Equatable {
   String? picture;
   final String id;
   final String description;
+  final int requiredQuantity;
 
   MyMeals(
       {required this.name,
@@ -14,24 +15,34 @@ class MyMeals extends Equatable {
       required this.price,
       required this.id,
       required this.description,
+      required this.requiredQuantity,
       this.picture});
 
-  static final empty =
-      MyMeals(name: '', available: false, price: 0, id: '', description: '');
+  static final empty = MyMeals(
+      name: '',
+      available: false,
+      price: 0,
+      id: '',
+      description: '',
+      requiredQuantity: 0);
 
-  MyMeals copyWith(
-      {String? name,
-      bool? available,
-      double? price,
-      String? picture,
-      String? id,
-      String? description}) {
+  MyMeals copyWith({
+    String? name,
+    bool? available,
+    double? price,
+    String? picture,
+    String? id,
+    String? description,
+    int? requiredQuantity,
+  }) {
     return MyMeals(
-        name: name ?? this.name,
-        available: available ?? this.available,
-        price: price ?? this.price,
-        id: id ?? this.id,
-        description: description ?? this.description);
+      name: name ?? this.name,
+      available: available ?? this.available,
+      price: price ?? this.price,
+      id: id ?? this.id,
+      description: description ?? this.description,
+      requiredQuantity: requiredQuantity ?? this.requiredQuantity,
+    );
   }
 
   bool get isEmpty => this == MyMeals.empty;
@@ -41,5 +52,5 @@ class MyMeals extends Equatable {
   @override
   // TODO: implement props
   List<Object?> get props =>
-      [name, available, price, picture ?? '', id, description];
+      [name, available, price, picture ?? '', id, description,requiredQuantity];
 }
