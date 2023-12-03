@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import 'my_restaurant_bloc_bloc.dart';
+
 part 'my_restaurant_bloc_event.dart';
 part 'my_restaurant_bloc_state.dart';
 

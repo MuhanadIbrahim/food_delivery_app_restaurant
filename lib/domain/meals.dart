@@ -50,7 +50,7 @@ class MyMeals extends Equatable {
   bool get isNotEmpty => this != MyMeals.empty;
 
   @override
-  // TODO: implement props
+  
   List<Object?> get props =>
       [name, available, price, picture ?? '', id, description,requiredQuantity];
 }
