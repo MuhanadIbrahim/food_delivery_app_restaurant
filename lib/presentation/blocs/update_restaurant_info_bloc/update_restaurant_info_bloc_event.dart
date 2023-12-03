@@ -1,13 +1,13 @@
 part of 'update_restaurant_info_bloc_bloc.dart';
 
-abstract class UpdateUserInfoEvent extends Equatable {
-  const UpdateUserInfoEvent();
+abstract class UpdateRestaurantInfoEvent extends Equatable {
+  const UpdateRestaurantInfoEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class UploadPicture extends UpdateUserInfoEvent {
+class UploadPicture extends UpdateRestaurantInfoEvent {
   final String file;
   final String restaurantId;
 
