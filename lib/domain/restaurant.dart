@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:food_delivery_app_restaurant/domain/restaurant_entity.dart';
+
+import 'meals.dart';
 
 class MyRestaurant extends Equatable {
   final String name;
@@ -54,7 +57,23 @@ class MyRestaurant extends Equatable {
         picture: entity.picture);
   }
 
+
+  Future<void> addMeal(MyMeals meal) async {
+        try {
+            final CollectionReference mealsCollection = FirebaseFirestore.instance.collection('restaurants').doc(id).collection('meals');
+            await mealsCollection.add({
+                'name': meal.name,
+                'available': meal.available,
+                'price': meal.price,
+                'description': meal.description,
+                // ... other meal details
+            });
+        } catch (e) {
+            // Handle errors here
+            print('Error adding meal: $e');
+        }
+    }
   @override
-  // TODO: implement props
+  
   List<Object?> get props => [id, name, phoneNumber, email, picture ?? ''];
 }
