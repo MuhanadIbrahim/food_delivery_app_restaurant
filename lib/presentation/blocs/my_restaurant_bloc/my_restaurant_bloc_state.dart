@@ -2,7 +2,7 @@ part of 'my_restaurant_bloc_bloc.dart';
 
 enum MyRestaurantStatus { success, loading, failure }
 
-sealed class MyRestaurantBlocState extends Equatable {
+class MyRestaurantBlocState extends Equatable {
   final MyRestaurantStatus status;
 
   final MyRestaurant? restaurant;
