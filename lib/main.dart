@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:food_delivery_app_restaurant/presentation/screans/sign_up_screan.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: WelcomeScrean());
+    return MaterialApp(home: SignUpScrean());
   }
 }
 
@@ -25,6 +26,6 @@ class WelcomeScrean extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold();
+    return const Scaffold();
   }
 }
