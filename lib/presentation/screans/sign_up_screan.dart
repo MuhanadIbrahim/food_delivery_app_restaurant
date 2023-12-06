@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app_restaurant/constanints.dart';
 
 class SignUpScrean extends StatelessWidget {
   SignUpScrean({super.key});
@@ -79,7 +80,7 @@ class SignUpScrean extends StatelessWidget {
                     const ButtonStyle(elevation: MaterialStatePropertyAll(15)),
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    // Form is valid, proceed with submission logic
+                    Navigator.pushNamed(context, ksignInScrean);
                   } else {
                     AutovalidateMode;
                   }
