@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:food_delivery_app_restaurant/constanints.dart';
+import 'package:food_delivery_app_restaurant/presentation/screans/home_screan.dart';
 import 'package:food_delivery_app_restaurant/presentation/screans/sign_in_screan.dart';
 import 'package:food_delivery_app_restaurant/presentation/screans/sign_up_screan.dart';
 import 'firebase_options.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(routes: {
       ksignUpScrean: (context) => SignUpScrean(),
       ksignInScrean: (context) => SignInScrean(),
+      khomeScrean:(context) => HomeScrean(),
     }, home: SignUpScrean());
   }
 }

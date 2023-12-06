@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app_restaurant/constanints.dart';
 
 class SignInScrean extends StatelessWidget {
   SignInScrean({super.key});
@@ -77,7 +78,7 @@ class SignInScrean extends StatelessWidget {
                     const ButtonStyle(elevation: MaterialStatePropertyAll(15)),
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    // Form is valid, proceed with submission logic
+                    Navigator.pushReplacementNamed(context, khomeScrean);
                   } else {
                     AutovalidateMode;
                   }
