@@ -17,15 +17,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: SignUpScrean());
-  }
-}
-
-class WelcomeScrean extends StatelessWidget {
-  const WelcomeScrean({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
+    return MaterialApp(
+      routes: {},
+      home: SignUpScrean());
   }
 }
