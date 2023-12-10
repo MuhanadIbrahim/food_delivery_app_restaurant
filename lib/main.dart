@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery_app_restaurant/constanints.dart';
 import 'package:food_delivery_app_restaurant/presentation/screans/home_screan.dart';
 import 'package:food_delivery_app_restaurant/presentation/screans/sign_in_screan.dart';
@@ -20,10 +21,30 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(routes: {
-      ksignUpScrean: (context) => SignUpScrean(),
-      ksignInScrean: (context) => SignInScrean(),
-      khomeScrean:(context) => HomeScrean(),
-    }, home: SignUpScrean());
+    return ScreenUtilInit(
+      designSize: const Size(390, 844),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      // Use builder only if you need to use library outside ScreenUtilInit context
+      builder: (_, child) {
+        return MaterialApp(
+          routes: {
+            ksignUpScrean: (context) => SignUpScrean(),
+            ksignInScrean: (context) => SignInScrean(),
+            khomeScrean: (context) => HomeScrean(),
+          },
+
+          debugShowCheckedModeBanner: false,
+          title: 'First Method',
+          // You can use the library anywhere in the app even in theme
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+          ),
+          home: SignUpScrean(),
+        );
+      },
+      // child:  SignUpScrean(),
+    );
   }
 }
