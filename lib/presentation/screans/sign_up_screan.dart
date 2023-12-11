@@ -30,7 +30,7 @@ class SignUpScrean extends StatelessWidget {
                   Text("Restaurant Dashboard",
                       style: TextStyle(
                         color: const Color(0xff4443FF),
-                        fontSize: 18.sp,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.w600,
                       ))
                 ],
@@ -64,7 +64,7 @@ class SignUpScrean extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 15.h,
+                      height: 25.h,
                     ),
                     Text(
                       'Full Name ',

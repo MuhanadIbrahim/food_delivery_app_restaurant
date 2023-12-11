@@ -30,7 +30,7 @@ class SignInScrean extends StatelessWidget {
                   Text("Restaurant Dashboard",
                       style: TextStyle(
                         color: const Color(0xff4443FF),
-                        fontSize: 18.sp,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.w600,
                       ))
                 ],
@@ -64,7 +64,7 @@ class SignInScrean extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 15.h,
+                      height: 30.h,
                     ),
                     Text(
                       'Email ',
@@ -113,7 +113,6 @@ class SignInScrean extends StatelessWidget {
                       height: 28.h,
                     ),
                     InkWell(
-                      onTap: () => Navigator.pushNamed(context, ksignInScrean),
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.r),
