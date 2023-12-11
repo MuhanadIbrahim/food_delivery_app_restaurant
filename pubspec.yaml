@@ -64,6 +64,7 @@ flutter:
     - assets/dashboard_logo.jpg
     - assets/logo.jpg
     - assets/burble_logo.jpg
+    - assets/restaurant_logo.jpg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

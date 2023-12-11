@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScrean extends StatelessWidget {
   const HomeScrean({super.key});
@@ -6,81 +7,100 @@ class HomeScrean extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: const [
-          Spacer(
-            flex: 1,
-          ),
-          Text(
-            'home',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-          ),
-          Spacer(
-            flex: 1,
-          ),
-        ],
-      ),
+      backgroundColor: Colors.grey,
       body: Column(
         children: [
+          SizedBox(
+            height: 28.h,
+          ),
           Padding(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 0.02,
-              right: MediaQuery.of(context).size.width * 0.03,
-              top: MediaQuery.of(context).size.height * 0.02,
-              bottom: MediaQuery.of(context).size.height * 0.02,
-            ),
-            child: Text('Welcome To DashBoardScrean',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-          ),
-          AspectRatio(
-            aspectRatio: 1,
-            child: SizedBox(
-              width: double.infinity,
-              child: GridView.builder(
-                itemCount: 4,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // Two images per row
-                ),
-                itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 15,
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height / 25,
-                      width: MediaQuery.of(context).size.width / 25,
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 10.w,
                     ),
-                  );
-                },
-              ),
+                    SizedBox(
+                      height: 40.h,
+                      width: 40.w,
+                      child: Image.asset(
+                        'assets/restaurant_logo.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Text(
+                      'restaurant name',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w500),
+                    )
+                  ],
+                ),
+                DropdownButton(
+                    dropdownColor: Colors.black, items: [], onChanged: null),
+              ],
             ),
           ),
-          const Text(
-            'comments of the Customers',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 7,
-              itemBuilder: (context, index) {
-                // return ListTile(
-                //   leading: Container(
-                //     color: Colors.amber,
-                //   ),
-                //   title: Text('main title'),
-                //   subtitle: Text('main subtitle'),
-                //   isThreeLine: false,
-                //   trailing: Text('rating'),
-                // );
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Title(
-                      color: Colors.green,
-                      child: Container(
-                        color: Colors.green,
-                        height: 30,
-                        width: double.infinity,
-                      )),
-                );
-              },
+          Container(
+              width: double.infinity,
+              child: Divider(
+                color: Colors.black,
+                thickness: 2.h,
+              )),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    Text(
+                      'Meals Request',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.w400),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    Text(
+                      '23',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.w500),
+                    )
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      '-5,09%',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    IconButton(
+                      icon: Icon(Icons.arrow_downward, color: Colors.black),
+                      onPressed: () {
+                        // Add your onPressed functionality here
+                      },
+                    )
+                  ],
+                )
+              ],
             ),
           )
         ],

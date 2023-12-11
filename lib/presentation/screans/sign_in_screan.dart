@@ -113,6 +113,7 @@ class SignInScrean extends StatelessWidget {
                       height: 28.h,
                     ),
                     InkWell(
+                      onTap: () => Navigator.pushNamed(context, khomeScrean),
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.r),
