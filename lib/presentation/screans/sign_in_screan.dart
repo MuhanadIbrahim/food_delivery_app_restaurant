@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery_app_restaurant/constanints.dart';
 
 class SignInScrean extends StatelessWidget {
@@ -7,86 +8,168 @@ class SignInScrean extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: const [
-          Spacer(
-            flex: 1,
-          ),
-          Text(
-            'SignIn',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-          ),
-          Spacer(
-            flex: 1,
-          ),
-        ],
-      ),
-      body: Form(
-        key: formKey,
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.02,
-            right: MediaQuery.of(context).size.width * 0.03,
-            top: MediaQuery.of(context).size.height * 0.05,
-            bottom: MediaQuery.of(context).size.height * 0.1,
-          ),
+          padding:
+              EdgeInsets.only(left: 20.w, right: 20.w, top: 5.h, bottom: 5.h),
           child: Column(
             children: [
-              const Spacer(
-                flex: 1,
+              SizedBox(
+                height: 25.h,
               ),
-              const Text(
-                'Email',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+              Row(
+                children: [
+                  SizedBox(
+                    height: 80.h,
+                    width: 88.w,
+                    child: Image.asset(
+                      'assets/burble_logo.jpg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Text("Restaurant Dashboard",
+                      style: TextStyle(
+                        color: const Color(0xff4443FF),
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                      ))
+                ],
               ),
-              const Spacer(
-                flex: 1,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(border: OutlineInputBorder()),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "please enter your email";
-                  }
-                  return null;
-                },
-              ),
-              const Spacer(
-                flex: 1,
-              ),
-              const Text(
-                'Password',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-              ),
-              const Spacer(
-                flex: 1,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(border: OutlineInputBorder()),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "please enter your password";
-                  }
-                  return null;
-                },
-              ),
-              const Spacer(
-                flex: 2,
-              ),
-              ElevatedButton(
-                style:
-                    const ButtonStyle(elevation: MaterialStatePropertyAll(15)),
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    Navigator.pushReplacementNamed(context, khomeScrean);
-                  } else {
-                    AutovalidateMode;
-                  }
-                },
-                child: const Text('Submit', style: TextStyle(fontSize: 25)),
-              ),
-              const Spacer(
-                flex: 3,
+              Padding(
+                padding: EdgeInsets.only(
+                    left: 10.w, right: 10.w, top: 20.h, bottom: 20.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: 1.w, right: 5.w, top: 5.h, bottom: 12.h),
+                      child: Text(
+                        ' Sign In',
+                        style: TextStyle(
+                          color: const Color(0xFF202020),
+                          fontSize: 20.sp,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Became member ,you’ll get exlusive treatment from Restaurant Dashboard',
+                      style: TextStyle(
+                        color: const Color(0xFF939393),
+                        fontSize: 12.sp,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    Text(
+                      'Email ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: const Color(0xFF202020),
+                        fontSize: 14.sp,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                        height: 0.12.h,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 22.h,
+                    ),
+                    const TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Enter aemail',
+                      ),
+                    ),
+                    SizedBox(
+                      height: 28.h,
+                    ),
+                    Text(
+                      'Password ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: const Color(0xFF202020),
+                        fontSize: 14.sp,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                        height: 0.12.h,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 22.h,
+                    ),
+                    const TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Your password',
+                      ),
+                    ),
+                    SizedBox(
+                      height: 28.h,
+                    ),
+                    InkWell(
+                      onTap: () => Navigator.pushNamed(context, ksignInScrean),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.r),
+                          color: const Color(0xff4443FF),
+                        ),
+                        width: double.infinity,
+                        height: 48.h,
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 8.h),
+                            child: Text(
+                              'Sign In',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w600,
+                                height: 0.12.h,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 28.h,
+                    ),
+                    Center(
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Forget your password?',
+                              style: TextStyle(
+                                color: const Color(0xFF939393),
+                                fontSize: 12.sp,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w300,
+                                height: 0.14,
+                              ),
+                            ),
+                            TextSpan(
+                              text: ' Rest password',
+                              style: TextStyle(
+                                color: const Color(0xFF7271FF),
+                                fontSize: 12.sp,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

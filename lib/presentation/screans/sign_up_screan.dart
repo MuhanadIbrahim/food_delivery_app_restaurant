@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery_app_restaurant/constanints.dart';
 
 class SignUpScrean extends StatelessWidget {
   const SignUpScrean({super.key});
@@ -10,9 +11,30 @@ class SignUpScrean extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding:
-              EdgeInsets.only(left: 20.w, right: 20.w, top: 60.h, bottom: 50.h),
+              EdgeInsets.only(left: 20.w, right: 20.w, top: 5.h, bottom: 5.h),
           child: Column(
             children: [
+              SizedBox(
+                height: 25.h,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    height: 80.h,
+                    width: 88.w,
+                    child: Image.asset(
+                      'assets/burble_logo.jpg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Text("Restaurant Dashboard",
+                      style: TextStyle(
+                        color: const Color(0xff4443FF),
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                      ))
+                ],
+              ),
               Padding(
                 padding: EdgeInsets.only(
                     left: 10.w, right: 10.w, top: 20.h, bottom: 20.h),
@@ -33,7 +55,7 @@ class SignUpScrean extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Became trivo member ,you’ll get exlusive treatment from trivo',
+                      'Became member ,you’ll get exlusive treatment from Restaurant Dashboard',
                       style: TextStyle(
                         color: const Color(0xFF939393),
                         fontSize: 12.sp,
@@ -42,7 +64,7 @@ class SignUpScrean extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 28.h,
+                      height: 15.h,
                     ),
                     Text(
                       'Full Name ',
@@ -113,24 +135,27 @@ class SignUpScrean extends StatelessWidget {
                     SizedBox(
                       height: 28.h,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.r),
-                        color: const Color(0xff4443FF),
-                      ),
-                      width: double.infinity,
-                      height: 48.h,
-                      child: Center(
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 8.h),
-                          child: Text(
-                            'Create an Account',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              height: 0.12.h,
+                    InkWell(
+                      onTap: () => Navigator.pushNamed(context, ksignInScrean),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.r),
+                          color: const Color(0xff4443FF),
+                        ),
+                        width: double.infinity,
+                        height: 48.h,
+                        child: Center(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 8.h),
+                            child: Text(
+                              'Create an Account',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w600,
+                                height: 0.12.h,
+                              ),
                             ),
                           ),
                         ),
