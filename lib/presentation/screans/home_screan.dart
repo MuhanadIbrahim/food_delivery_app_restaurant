@@ -401,20 +401,20 @@ class HomeScrean extends StatelessWidget {
                           ],
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               '-5,09% respone rate',
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 14.sp,
+                                  fontSize: 8.sp,
                                   fontWeight: FontWeight.w500),
                             ),
-                            SizedBox(
-                              width: 2.w,
-                            ),
                             IconButton(
+                              iconSize: 5.sp,
+                              padding: EdgeInsets.all(2.r),
                               icon: Icon(Icons.arrow_downward,
-                                  size: 19.sp, color: Colors.black),
+                                  size: 15.sp, color: Colors.black),
                               onPressed: () {
                                 // Add your onPressed functionality here
                               },
