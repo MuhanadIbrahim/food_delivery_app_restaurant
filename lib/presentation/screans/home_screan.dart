@@ -177,6 +177,7 @@ class HomeScrean extends StatelessWidget {
                 ),
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -229,11 +230,200 @@ class HomeScrean extends StatelessWidget {
                             onPressed: () {
                               // Add your onPressed functionality here
                             },
-                          )
+                          ),
                         ],
                       )
                     ],
                   ),
+                  Container(
+                    padding: EdgeInsets.all(10.r),
+                    height: 80.h,
+                    width: 340.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.r),
+                      color: const Color(0xffCFB8FF),
+                      border: Border.all(
+                        width: 2,
+                        color: Colors.black,
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            Text(
+                              'Meals Request',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                            SizedBox(
+                              height: 8.h,
+                            ),
+                            Text(
+                              '23',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w500),
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '-5,09%',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              width: 1.w,
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.arrow_downward,
+                                  size: 19.sp, color: Colors.black),
+                              onPressed: () {
+                                // Add your onPressed functionality here
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.r),
+                    height: 80.h,
+                    width: 340.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.r),
+                      color: const Color(0xffFEFFDD),
+                      border: Border.all(
+                        width: 2,
+                        color: Colors.black,
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            Text(
+                              'Add Meals',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                            SizedBox(
+                              height: 8.h,
+                            ),
+                            Text(
+                              '23 meals in the menu',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w500),
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '-5,09%',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              width: 2.w,
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.arrow_downward,
+                                  size: 19.sp, color: Colors.black),
+                              onPressed: () {
+                                // Add your onPressed functionality here
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10.r),
+                    height: 80.h,
+                    width: 340.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.r),
+                      color: const Color(0xffCFB8FF),
+                      border: Border.all(
+                        width: 2,
+                        color: Colors.black,
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            Text(
+                              'Chat with Client',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                            SizedBox(
+                              height: 8.h,
+                            ),
+                            Text(
+                              '23 Unreaded',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w500),
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '-5,09% respone rate',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              width: 2.w,
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.arrow_downward,
+                                  size: 19.sp, color: Colors.black),
+                              onPressed: () {
+                                // Add your onPressed functionality here
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
