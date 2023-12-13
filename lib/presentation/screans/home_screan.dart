@@ -165,7 +165,7 @@ class HomeScrean extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(18.r),
+              padding: EdgeInsets.all(13.r),
               height: 80.h,
               width: double.infinity.w,
               decoration: BoxDecoration(
@@ -404,10 +404,10 @@ class HomeScrean extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '-5,09% respone rate',
+                              '-5,09% respone',
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 8.sp,
+                                  fontSize: 10.sp,
                                   fontWeight: FontWeight.w500),
                             ),
                             IconButton(
