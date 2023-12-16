@@ -58,21 +58,21 @@ class MyRestaurant extends Equatable {
   }
 
 
-  Future<void> addMeal(MyMeals meal) async {
-        try {
-            final CollectionReference mealsCollection = FirebaseFirestore.instance.collection('restaurants').doc(id).collection('meals');
-            await mealsCollection.add({
-                'name': meal.name,
-                'available': meal.available,
-                'price': meal.price,
-                'description': meal.description,
-                // ... other meal details
-            });
-        } catch (e) {
-            // Handle errors here
-            print('Error adding meal: $e');
-        }
-    }
+  // Future<void> addMeal(MyMeals meal) async {
+  //       try {
+  //           final CollectionReference mealsCollection = FirebaseFirestore.instance.collection('restaurants').doc(id).collection('meals');
+  //           await mealsCollection.add({
+  //               'name': meal.name,
+  //               'available': meal.available,
+  //               'price': meal.price,
+  //               'description': meal.description,
+  //               // ... other meal details
+  //           });
+  //       } catch (e) {
+  //           // Handle errors here
+  //           print('Error adding meal: $e');
+  //       }
+  //   }
   @override
   
   List<Object?> get props => [id, name, phoneNumber, email, picture ?? ''];

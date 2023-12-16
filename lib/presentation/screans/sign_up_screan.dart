@@ -151,7 +151,7 @@ class SignUpScrean extends StatelessWidget {
                               'Create an Account',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 14,
+                                fontSize: 14.sp,
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w600,
                                 height: 0.12.h,

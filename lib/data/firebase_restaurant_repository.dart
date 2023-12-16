@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_delivery_app_restaurant/data/restaurant_repository.dart';
+import 'package:food_delivery_app_restaurant/domain/meals.dart';
 import 'package:food_delivery_app_restaurant/domain/restaurant.dart';
 import 'package:food_delivery_app_restaurant/domain/restaurant_entity.dart';
 
@@ -339,4 +340,25 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
       rethrow;
     }
   }
+
+  @override
+ Future<void> addMeal(MyMeals meal, MyRestaurant restaurant) async {
+  try {
+    final CollectionReference mealsCollection = FirebaseFirestore.instance
+        .collection('restaurants')
+        .doc(restaurant.id)
+        .collection('meals');
+    await mealsCollection.add({
+      'name': meal.name,
+      'available': meal.available,
+      'price': meal.price,
+      'description': meal.description,
+      // ... other meal details
+    });
+  } catch (e) {
+    // Handle errors here
+    print('Error adding meal: $e');
+  }
+}
+
 }

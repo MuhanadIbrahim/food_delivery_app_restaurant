@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:food_delivery_app_restaurant/domain/restaurant.dart';
 
+import '../domain/meals.dart';
+
+
 abstract class RestaurantRepository {
   Stream<User?> get user;
 
@@ -17,4 +20,6 @@ abstract class RestaurantRepository {
   Future<MyRestaurant> getMyRestaurant(String myRestaurantId);
 
   Future<String> uploadPicture(String file, String restaurantId);
+
+  Future<void> addMeal(MyMeals meal,MyRestaurant restaurant);
 }
