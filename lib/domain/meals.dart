@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class MyMeals extends Equatable {
@@ -45,12 +46,29 @@ class MyMeals extends Equatable {
     );
   }
 
+  factory MyMeals.fromMap(Object? object) {
+    final data = object as Map<String, dynamic>;
+    return MyMeals(
+        id: data['id'] as String,
+        name: data['name'] as String ,
+        description: data['description'] as String,
+        price: data['price'] as double,
+        available: data['available'] as bool,
+        requiredQuantity: data['requiredQuantity'] as int,
+        picture: data['picture'] as String );
+  }
   bool get isEmpty => this == MyMeals.empty;
 
   bool get isNotEmpty => this != MyMeals.empty;
 
   @override
-  
-  List<Object?> get props =>
-      [name, available, price, picture ?? '', id, description,requiredQuantity];
+  List<Object?> get props => [
+        name,
+        available,
+        price,
+        picture ?? '',
+        id,
+        description,
+        requiredQuantity
+      ];
 }

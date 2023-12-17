@@ -16,3 +16,13 @@ class UploadPicture extends UpdateRestaurantInfoEvent {
   @override
   List<Object> get props => [file, restaurantId];
 }
+
+class AddMeal extends UpdateRestaurantInfoEvent {
+  final MyMeals meal;
+  final MyRestaurant restaurant;
+
+  const AddMeal(this.meal, this.restaurant);
+
+  @override
+  List<Object> get props => [meal, restaurant];
+}
