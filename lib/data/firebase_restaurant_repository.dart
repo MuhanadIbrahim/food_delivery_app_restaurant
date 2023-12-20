@@ -348,9 +348,10 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
           .collection('meals');
       await mealsCollection.add({
         'name': meal.name,
-
+        'picture': meal.picture,
         'price': meal.price,
         'description': meal.description,
+        'id': meal.id
         // ... other meal details
       });
 

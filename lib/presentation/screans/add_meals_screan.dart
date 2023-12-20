@@ -83,7 +83,7 @@ class AddMealScrean extends StatelessWidget {
             ),
             Container(
               padding: EdgeInsets.all(13.r),
-              height: 450.h,
+              height: 500.h,
               width: 370.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25.r),
@@ -99,7 +99,7 @@ class AddMealScrean extends StatelessWidget {
                 children: [
                   Container(
                     padding: EdgeInsets.all(10.r),
-                    height: 80.h,
+                    height: 85.h,
                     width: 340.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
@@ -120,12 +120,17 @@ class AddMealScrean extends StatelessWidget {
                         ),
                         Container(
                           color: Colors.white,
-                          height: 40.h,
+                          height: 35.h,
                           child: TextField(
                             decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(top: 1.h, left: 1.w),
                               border: OutlineInputBorder(),
                               hintText: 'Enter meal name',
+                              hintStyle: TextStyle(
+                                  color: Colors.grey, fontSize: 15.sp),
                             ),
+                            style: TextStyle(color: Colors.black),
                           ),
                         ),
                       ],
@@ -133,7 +138,7 @@ class AddMealScrean extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10.r),
-                    height: 80.h,
+                    height: 85.h,
                     width: 340.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
@@ -148,18 +153,21 @@ class AddMealScrean extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          'meal name',
+                          'meal price',
                           style:
                               TextStyle(color: Colors.black, fontSize: 15.sp),
                         ),
                         Container(
                           color: Colors.white,
-                          height: 40.h,
+                          height: 35.h,
                           child: TextField(
                             decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(top: 1.h, left: 1.w),
                               border: OutlineInputBorder(),
-                              hintText: 'Enter meal name',
+                              hintText: 'Enter meal price',
                             ),
+                            style: TextStyle(color: Colors.black),
                           ),
                         ),
                       ],
@@ -167,7 +175,7 @@ class AddMealScrean extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10.r),
-                    height: 80.h,
+                    height: 85.h,
                     width: 340.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
@@ -182,18 +190,21 @@ class AddMealScrean extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          'meal name',
+                          'meal picture',
                           style:
                               TextStyle(color: Colors.black, fontSize: 15.sp),
                         ),
                         Container(
                           color: Colors.white,
-                          height: 40.h,
+                          height: 35.h,
                           child: TextField(
                             decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(top: 1.h, left: 1.w),
                               border: OutlineInputBorder(),
-                              hintText: 'Enter meal name',
+                              hintText: 'Enter meal picture',
                             ),
+                            style: TextStyle(color: Colors.black),
                           ),
                         ),
                       ],
@@ -201,7 +212,7 @@ class AddMealScrean extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10.r),
-                    height: 80.h,
+                    height: 85.h,
                     width: 340.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
@@ -216,18 +227,21 @@ class AddMealScrean extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          'meal name',
+                          'meal id',
                           style:
                               TextStyle(color: Colors.black, fontSize: 15.sp),
                         ),
                         Container(
                           color: Colors.white,
-                          height: 40.h,
+                          height: 35.h,
                           child: TextField(
                             decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(top: 1.h, left: 1.w),
                               border: OutlineInputBorder(),
-                              hintText: 'Enter meal name',
+                              hintText: 'Enter meal id',
                             ),
+                            style: TextStyle(color: Colors.black),
                           ),
                         ),
                       ],
@@ -235,7 +249,7 @@ class AddMealScrean extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.all(10.r),
-                    height: 80.h,
+                    height: 100.h,
                     width: 340.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
@@ -250,7 +264,7 @@ class AddMealScrean extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          'meal name',
+                          'meal description',
                           style:
                               TextStyle(color: Colors.black, fontSize: 15.sp),
                         ),
@@ -259,9 +273,12 @@ class AddMealScrean extends StatelessWidget {
                           height: 40.h,
                           child: TextField(
                             decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(top: 1.h, left: 1.w),
                               border: OutlineInputBorder(),
-                              hintText: 'Enter meal name',
+                              hintText: 'Enter meal description',
                             ),
+                            style: TextStyle(color: Colors.black),
                           ),
                         ),
                       ],
