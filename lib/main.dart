@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery_app_restaurant/constanints.dart';
+import 'package:food_delivery_app_restaurant/presentation/screans/add_meals_screan.dart';
 import 'package:food_delivery_app_restaurant/presentation/screans/home_screan.dart';
 import 'package:food_delivery_app_restaurant/presentation/screans/sign_in_screan.dart';
 import 'package:food_delivery_app_restaurant/presentation/screans/sign_up_screan.dart';
@@ -31,9 +32,10 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           builder: DevicePreview.appBuilder,
           routes: {
-            ksignUpScrean: (context) => SignUpScrean(),
+            ksignUpScrean: (context) =>const SignUpScrean(),
             ksignInScrean: (context) => SignInScrean(),
-            khomeScrean: (context) => HomeScrean(),
+            khomeScrean: (context) =>const HomeScrean(),
+            kaddMealsScrean:(context) => const AddMealScrean()
           },
 
           debugShowCheckedModeBanner: false,

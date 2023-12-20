@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery_app_restaurant/constanints.dart';
 
 class HomeScrean extends StatelessWidget {
   const HomeScrean({super.key});
@@ -298,67 +299,72 @@ class HomeScrean extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(10.r),
-                    height: 80.h,
-                    width: 340.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.r),
-                      color: const Color(0xffFEFFDD),
-                      border: Border.all(
-                        width: 2,
-                        color: Colors.black,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            Text(
-                              'Add Meals',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w400),
-                            ),
-                            SizedBox(
-                              height: 8.h,
-                            ),
-                            Text(
-                              '23 meals in the menu',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w500),
-                            )
-                          ],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, kaddMealsScrean);
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(10.r),
+                      height: 80.h,
+                      width: 340.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15.r),
+                        color: const Color(0xffFEFFDD),
+                        border: Border.all(
+                          width: 2,
+                          color: Colors.black,
                         ),
-                        Row(
-                          children: [
-                            Text(
-                              '-5,09%',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            SizedBox(
-                              width: 2.w,
-                            ),
-                            IconButton(
-                              icon: Icon(Icons.arrow_downward,
-                                  size: 19.sp, color: Colors.black),
-                              onPressed: () {
-                                // Add your onPressed functionality here
-                              },
-                            ),
-                          ],
-                        )
-                      ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              SizedBox(
+                                height: 5.h,
+                              ),
+                              Text(
+                                'Add Meals',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                              SizedBox(
+                                height: 8.h,
+                              ),
+                              Text(
+                                '23 meals in the menu',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w500),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                '-5,09%',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(
+                                width: 2.w,
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.arrow_downward,
+                                    size: 19.sp, color: Colors.black),
+                                onPressed: () {
+                                  // Add your onPressed functionality here
+                                },
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   Container(
