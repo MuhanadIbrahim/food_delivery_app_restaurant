@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 class MyMeals extends Equatable {
   final String name;
-  final bool available;
+
   final double price;
   String? picture;
   final String id;
@@ -11,7 +11,6 @@ class MyMeals extends Equatable {
 
   MyMeals(
       {required this.name,
-      required this.available,
       required this.price,
       required this.id,
       required this.description,
@@ -19,7 +18,6 @@ class MyMeals extends Equatable {
 
   static final empty = MyMeals(
     name: '',
-    available: false,
     price: 0,
     id: '',
     description: '',
@@ -35,7 +33,6 @@ class MyMeals extends Equatable {
   }) {
     return MyMeals(
       name: name ?? this.name,
-      available: available ?? this.available,
       price: price ?? this.price,
       id: id ?? this.id,
       description: description ?? this.description,
@@ -49,7 +46,6 @@ class MyMeals extends Equatable {
         name: data['name'] as String,
         description: data['description'] as String,
         price: data['price'] as double,
-        available: data['available'] as bool,
         picture: data['picture'] as String);
   }
   bool get isEmpty => this == MyMeals.empty;
@@ -59,7 +55,6 @@ class MyMeals extends Equatable {
   @override
   List<Object?> get props => [
         name,
-        available,
         price,
         picture ?? '',
         id,

@@ -12,13 +12,12 @@ import 'package:food_delivery_app_restaurant/domain/meals.dart';
 import 'package:food_delivery_app_restaurant/domain/restaurant.dart';
 import 'package:food_delivery_app_restaurant/domain/restaurant_entity.dart';
 
-
 class FirebaseRestaurantRepository implements RestaurantRepository {
-
-   final userCollection = FirebaseFirestore.instance.collection('restaurant');
+  final userCollection = FirebaseFirestore.instance.collection('restaurant');
 
   @override
-  Future<MyRestaurant> signUp(MyRestaurant myRestaurant, String password) async {
+  Future<MyRestaurant> signUp(
+      MyRestaurant myRestaurant, String password) async {
     try {
       UserCredential user = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
@@ -79,7 +78,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
 
   @override
   Future<bool> signIn(String email, String password) async {
-     // try {
+    // try {
     //   UserCredential userCredential = await FirebaseAuth.instance
     //       .signInWithEmailAndPassword(email: email, password: password);
     // } on FirebaseAuthException catch (e) {
@@ -223,12 +222,12 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
   @override
   Future<void> logOut() async {
     await FirebaseAuth.instance.signOut();
-     print('=================user firebase  Sign Out !');
+    print('=================user firebase  Sign Out !');
   }
 
   @override
   Future<void> resetPassword(String email) async {
-   try {
+    try {
       FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       // AwesomeDialog(
       //   context: context,
@@ -270,9 +269,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
       }
     }
   }
-  
 
-   
   String parseFirebaseAuthExceptionMessage(
       {String plugin = "auth", required String? input}) {
     if (input == null) {
@@ -290,14 +287,12 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
     return "unknown";
   }
 
-
-
-
   @override
   Future<MyRestaurant> getMyRestaurant(String myRestaurantId) {
     try {
       return userCollection.doc(myRestaurantId).get().then((value) =>
-          MyRestaurant.fromEntity(MyRestaurantEntity.fromDocument(value.data()!)));
+          MyRestaurant.fromEntity(
+              MyRestaurantEntity.fromDocument(value.data()!)));
     } catch (e) {
       print(e);
       rethrow;
@@ -307,7 +302,9 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
   @override
   Future<void> setRestaurantData(MyRestaurant restaurant) async {
     try {
-      await userCollection.doc(restaurant.id).set(restaurant.toEntity().toDocument());
+      await userCollection
+          .doc(restaurant.id)
+          .set(restaurant.toEntity().toDocument());
     } catch (e) {
       print(e);
       rethrow;
@@ -316,8 +313,8 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
 
   @override
   // TODO: implement user
-  Stream<User?> get user{
-     return FirebaseAuth.instance.authStateChanges().map((firebaseUser) {
+  Stream<User?> get user {
+    return FirebaseAuth.instance.authStateChanges().map((firebaseUser) {
       final user = firebaseUser;
       return user;
     });
@@ -327,8 +324,9 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
   Future<String> uploadPicture(String file, String restaurantId) async {
     try {
       File imageFile = File(file);
-      Reference firebaseStoreRef =
-          FirebaseStorage.instance.ref().child('$restaurantId/PP/${restaurantId}_lead');
+      Reference firebaseStoreRef = FirebaseStorage.instance
+          .ref()
+          .child('$restaurantId/PP/${restaurantId}_lead');
       await firebaseStoreRef.putFile(
         imageFile,
       );
@@ -342,30 +340,25 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
   }
 
   @override
- Future<void> addMeal(MyMeals meal, MyRestaurant restaurant) async {
-  try {
+  Future<void> addMeal(MyMeals meal, MyRestaurant restaurant) async {
+    try {
+      final CollectionReference mealsCollection = FirebaseFirestore.instance
+          .collection('restaurants')
+          .doc(restaurant.id)
+          .collection('meals');
+      await mealsCollection.add({
+        'name': meal.name,
 
-       
+        'price': meal.price,
+        'description': meal.description,
+        // ... other meal details
+      });
 
-
-    final CollectionReference mealsCollection = FirebaseFirestore.instance
-        .collection('restaurants')
-        .doc(restaurant.id)
-        .collection('meals');
-    await mealsCollection.add({
-      'name': meal.name,
-      'available': meal.available,
-      'price': meal.price,
-      'description': meal.description,
-      // ... other meal details
-    });
-
-    final querySnapshot = await mealsCollection.get();
-     querySnapshot.docs.map((doc) => MyMeals.fromMap(doc.data())).toList();
-  } catch (e) {
-    // Handle errors here
-    print('Error adding meal: $e');
+      final querySnapshot = await mealsCollection.get();
+      querySnapshot.docs.map((doc) => MyMeals.fromMap(doc.data())).toList();
+    } catch (e) {
+      // Handle errors here
+      print('Error adding meal: $e');
+    }
   }
-}
-
 }
