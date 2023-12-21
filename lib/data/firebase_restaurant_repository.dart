@@ -340,7 +340,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
   }
 
   @override
-  Future<void> addMeal(MyMeals meal, MyRestaurant restaurant) async {
+  Future<MyMeals> addMeal(MyMeals meal, MyRestaurant restaurant) async {
     try {
       final CollectionReference mealsCollection = FirebaseFirestore.instance
           .collection('restaurants')
@@ -356,13 +356,15 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
       });
 
       final querySnapshot = await mealsCollection.get();
-      querySnapshot.docs.map((doc) => MyMeals.fromMap(doc.data())).toList();
+      MyMeals myMeal = querySnapshot.docs
+          .map((doc) => MyMeals.fromMap(doc.data())) as MyMeals;
+      return myMeal;
     } catch (e) {
+      rethrow;
       // Handle errors here
-      print('Error adding meal: $e');
+      
     }
   }
-  
 
   @override
   Future<List<MyMeals>> getAllMeals(
@@ -379,7 +381,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
       return meals;
     } catch (e) {
       // Handle errors here
-     rethrow;
+      rethrow;
     }
   }
 }

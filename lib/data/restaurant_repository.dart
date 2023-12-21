@@ -21,7 +21,7 @@ abstract class RestaurantRepository {
 
   Future<String> uploadPicture(String file, String restaurantId);
 
-  Future<void> addMeal(MyMeals meal,MyRestaurant restaurant);
+  Future<MyMeals> addMeal(MyMeals meal,MyRestaurant restaurant);
 
   Future<List<MyMeals>> getAllMeals(MyMeals meal,MyRestaurant restaurant);
 }
