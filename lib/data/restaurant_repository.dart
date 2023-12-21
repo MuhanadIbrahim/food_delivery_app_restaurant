@@ -23,5 +23,5 @@ abstract class RestaurantRepository {
 
   Future<MyMeals> addMeal(MyMeals meal,MyRestaurant restaurant);
 
-  Future<List<MyMeals>> getAllMeals(MyMeals meal,MyRestaurant restaurant);
+  Future<List<MyMeals>> getAllMeals(MyRestaurant restaurant);
 }

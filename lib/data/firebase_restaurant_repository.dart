@@ -368,7 +368,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
 
   @override
   Future<List<MyMeals>> getAllMeals(
-      MyMeals meal, MyRestaurant restaurant) async {
+       MyRestaurant restaurant) async {
     try {
       final CollectionReference mealsCollection = FirebaseFirestore.instance
           .collection('restaurants')

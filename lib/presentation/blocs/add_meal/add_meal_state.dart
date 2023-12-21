@@ -22,7 +22,7 @@ class MealAddedSuccessfluy extends MealState {
 
   const MealAddedSuccessfluy(this.addMeal);
   @override
-  List<Object> get props => [];
+  List<Object> get props => [addMeal];
 }
 
 class MealAddFailed extends MealState {
