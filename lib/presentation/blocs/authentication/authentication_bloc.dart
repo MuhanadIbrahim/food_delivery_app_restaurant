@@ -8,15 +8,13 @@ import 'package:food_delivery_app_restaurant/data/restaurant_repository.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
-
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-      
   final RestaurantRepository restaurantRepository;
   late final StreamSubscription<User?> _userSubscription;
 
   AuthenticationBloc({required RestaurantRepository myRestaurantRepository})
-      : restaurantRepository =  myRestaurantRepository,
+      : restaurantRepository = myRestaurantRepository,
         super(const AuthenticationState.unknown()) {
     _userSubscription = restaurantRepository.user.listen(
       (authUser) {

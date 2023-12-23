@@ -1,10 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/Flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery_app_restaurant/constanints.dart';
 
-class SignInScrean extends StatelessWidget {
+import '../blocs/sign_in/sign_in_bloc.dart';
+
+class SignInScrean extends StatefulWidget {
   SignInScrean({super.key});
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  State<SignInScrean> createState() => _SignInScreanState();
+}
+
+class _SignInScreanState extends State<SignInScrean> {
+  String? email;
+
+  String? password;
+
+  GlobalKey<FormState> formkey = GlobalKey();
+
+  bool signInRequired = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +96,15 @@ class SignInScrean extends StatelessWidget {
                     SizedBox(
                       height: 22.h,
                     ),
-                    const TextField(
+                    TextFormField(
+                      onChanged: (value) {
+                        email = value;
+                      },
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please Enter Your Email';
+                        }
+                      },
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Enter aemail',
@@ -103,7 +127,15 @@ class SignInScrean extends StatelessWidget {
                     SizedBox(
                       height: 22.h,
                     ),
-                    const TextField(
+                    TextFormField(
+                      onChanged: (value) {
+                        password = value;
+                      },
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please Enter Your password';
+                        }
+                      },
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Your password',
@@ -112,32 +144,39 @@ class SignInScrean extends StatelessWidget {
                     SizedBox(
                       height: 28.h,
                     ),
-                    InkWell(
-                      onTap: () => Navigator.pushNamed(context, khomeScrean),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.r),
-                          color: const Color(0xff4443FF),
-                        ),
-                        width: double.infinity,
-                        height: 48.h,
-                        child: Center(
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 8.h),
-                            child: Text(
-                              'Sign In',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14.sp,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w600,
-                                height: 0.12.h,
+                    !signInRequired
+                        ? InkWell(
+                            onTap: () {
+                              if (formkey.currentState!.validate()) {
+                                context.read<SignInBloc>().add(SignInRequired(
+                                    email.toString(), password.toString()));
+                              }
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.r),
+                                color: const Color(0xff4443FF),
+                              ),
+                              width: double.infinity,
+                              height: 48.h,
+                              child: Center(
+                                child: Padding(
+                                  padding: EdgeInsets.only(top: 8.h),
+                                  child: Text(
+                                    'Sign In',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14.sp,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.w600,
+                                      height: 0.12.h,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                      ),
-                    ),
+                          )
+                        : const CircularProgressIndicator(),
                     SizedBox(
                       height: 28.h,
                     ),
