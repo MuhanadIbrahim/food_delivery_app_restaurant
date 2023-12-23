@@ -123,6 +123,7 @@ class _SignUpScreanState extends State<SignUpScrean> {
                             height: 22.h,
                           ),
                           TextFormField(
+                            style: TextStyle(color: Colors.black),
                             onChanged: (value) {
                               name = value;
                             },
@@ -157,6 +158,7 @@ class _SignUpScreanState extends State<SignUpScrean> {
                             height: 22.h,
                           ),
                           TextFormField(
+                            style: TextStyle(color: Colors.black),
                             onChanged: (value) {
                               email = value;
                             },
@@ -188,6 +190,7 @@ class _SignUpScreanState extends State<SignUpScrean> {
                             height: 22.h,
                           ),
                           TextFormField(
+                            style: TextStyle(color: Colors.black),
                             onChanged: (value) {
                               password = value;
                             },
