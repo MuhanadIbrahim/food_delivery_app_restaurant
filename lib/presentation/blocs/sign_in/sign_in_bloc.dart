@@ -16,12 +16,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       emit(SignInProcess());
 
       try {
-        var x = await _restaurantRepository.signIn(event.email, event.password);
-        if (x) {
-          emit(SignInSuccess());
-        } else {
-          emit(const SignInFailure());
-        }
+        await _restaurantRepository.signIn(event.email, event.password);
+        emit(SignInSuccess());
       } catch (e) {
         log(e.toString());
         emit(const SignInFailure());

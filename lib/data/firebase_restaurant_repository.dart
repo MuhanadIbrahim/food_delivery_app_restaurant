@@ -77,7 +77,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
   }
 
   @override
-  Future<bool> signIn(String email, String password) async {
+  Future<void> signIn(String email, String password) async {
     // try {
     //   UserCredential userCredential = await FirebaseAuth.instance
     //       .signInWithEmailAndPassword(email: email, password: password);
@@ -107,32 +107,31 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
     //   }
     // }
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
+       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      var emailVerified = userCredential.user!.emailVerified;
-      if (!emailVerified) {
-        // ignore: use_build_context_synchronously
-        // AwesomeDialog(
-        //   context: context,
-        //   dialogType: DialogType.error,
-        //   animType: AnimType.rightSlide,
-        //   title: 'Login failed',
-        //   desc:
-        //       "Please activate your account by clicking the link in your email.",
-        //   btnCancelOnPress: () {},
-        //   btnOkOnPress: () {},
-        // ).show();
-        Fluttertoast.showToast(
-            msg:
-                'Please activate your account by clicking the link in your email.',
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 16.0);
-      }
-      return emailVerified;
+      // var emailVerified = userCredential.user!.emailVerified;
+      // if (!emailVerified) {
+      //   // ignore: use_build_context_synchronously
+      //   // AwesomeDialog(
+      //   //   context: context,
+      //   //   dialogType: DialogType.error,
+      //   //   animType: AnimType.rightSlide,
+      //   //   title: 'Login failed',
+      //   //   desc:
+      //   //       "Please activate your account by clicking the link in your email.",
+      //   //   btnCancelOnPress: () {},
+      //   //   btnOkOnPress: () {},
+      //   // ).show();
+      //   Fluttertoast.showToast(
+      //       msg:
+      //           'Please activate your account by clicking the link in your email.',
+      //       toastLength: Toast.LENGTH_SHORT,
+      //       gravity: ToastGravity.CENTER,
+      //       timeInSecForIosWeb: 1,
+      //       backgroundColor: Colors.red,
+      //       textColor: Colors.white,
+      //       fontSize: 16.0);
+      // }
     } on FirebaseAuthException catch (e) {
       // Temporary Fix
       final code = parseFirebaseAuthExceptionMessage(input: e.message);
@@ -216,7 +215,6 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
           textColor: Colors.white,
           fontSize: 16.0);
     }
-    return false;
   }
 
   @override
@@ -362,13 +360,11 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
     } catch (e) {
       rethrow;
       // Handle errors here
-      
     }
   }
 
   @override
-  Future<List<MyMeals>> getAllMeals(
-       MyRestaurant restaurant) async {
+  Future<List<MyMeals>> getAllMeals(MyRestaurant restaurant) async {
     try {
       final CollectionReference mealsCollection = FirebaseFirestore.instance
           .collection('restaurants')

@@ -35,7 +35,7 @@ class _SignUpScreanState extends State<SignUpScrean> {
           if (state is SignUpSuccess) {
             setState(() {
               signInRequired = false;
-              Navigator.of(context).pushReplacementNamed(ksignInScrean);
+              Navigator.of(context).pushNamed(ksignInScrean);
             });
           } else if (state is SignUpProcess) {
             setState(() {
