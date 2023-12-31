@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:food_delivery_app_restaurant/data/restaurant_repository.dart';
@@ -16,8 +17,12 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       emit(SignInProcess());
 
       try {
-        await _restaurantRepository.signIn(event.email, event.password);
-        emit(SignInSuccess());
+        var x = await _restaurantRepository.signIn(event.email, event.password);
+        if (x) {
+          emit(SignInSuccess());
+        } else {
+          emit(const SignInFailure());
+        }
       } catch (e) {
         log(e.toString());
         emit(const SignInFailure());

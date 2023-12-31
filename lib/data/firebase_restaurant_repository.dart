@@ -71,13 +71,14 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
       }
       rethrow;
     } catch (e) {
-      print(e);
+      log(e.toString());
+
       rethrow;
     }
   }
 
   @override
-  Future<void> signIn(String email, String password) async {
+  Future<bool> signIn(String email, String password) async {
     // try {
     //   UserCredential userCredential = await FirebaseAuth.instance
     //       .signInWithEmailAndPassword(email: email, password: password);
@@ -132,6 +133,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
       //       textColor: Colors.white,
       //       fontSize: 16.0);
       // }
+      return true;
     } on FirebaseAuthException catch (e) {
       // Temporary Fix
       final code = parseFirebaseAuthExceptionMessage(input: e.message);
@@ -215,6 +217,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
           textColor: Colors.white,
           fontSize: 16.0);
     }
+    return false;
   }
 
   @override

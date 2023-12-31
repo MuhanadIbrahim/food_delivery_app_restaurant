@@ -9,7 +9,7 @@ abstract class RestaurantRepository {
 
   Future<MyRestaurant> signUp(MyRestaurant myRestaurant, String password);
 
-  Future<void> signIn(String email, String password);
+  Future<bool> signIn(String email, String password);
 
   Future<void> logOut();
 

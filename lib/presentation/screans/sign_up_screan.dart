@@ -246,7 +246,20 @@ class _SignUpScreanState extends State<SignUpScrean> {
                                     ),
                                   ),
                                 )
-                              : const CircularProgressIndicator(),
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5.r),
+                                    color: const Color(0xff4443FF),
+                                  ),
+                                  width: double.infinity,
+                                  height: 48.h,
+                                  child: Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 8.h),
+                                      child: const CircularProgressIndicator(),
+                                    ),
+                                  ),
+                                ),
                           SizedBox(
                             height: 28.h,
                           ),
