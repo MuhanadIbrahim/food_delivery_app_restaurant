@@ -11,7 +11,12 @@ class AddMealScreanBody extends StatefulWidget {
 }
 
 class _AddMealScreanBodyState extends State<AddMealScreanBody> {
- 
+  String? mealName;
+  double? mealPrice;
+  String? mealPicture;
+  String? mealId;
+  String? mealDescription;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddMealBloc, MealState>(
