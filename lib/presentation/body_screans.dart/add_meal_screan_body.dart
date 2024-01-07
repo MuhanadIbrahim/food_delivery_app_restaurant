@@ -137,7 +137,9 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                               color: Colors.white,
                               height: 35.h,
                               child: TextField(
-                                onChanged: (value) {},
+                                onChanged: (value) {
+                                  mealName = value;
+                                },
                                 decoration: InputDecoration(
                                   contentPadding:
                                       EdgeInsets.only(top: 1.h, left: 1.w),
@@ -177,6 +179,9 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                               color: Colors.white,
                               height: 35.h,
                               child: TextField(
+                                onChanged: (value) {
+                                  mealPrice = value as double?;
+                                },
                                 decoration: InputDecoration(
                                   contentPadding:
                                       EdgeInsets.only(top: 1.h, left: 1.w),
@@ -214,6 +219,9 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                               color: Colors.white,
                               height: 35.h,
                               child: TextField(
+                                onChanged: (value) {
+                                  mealPicture = value;
+                                },
                                 decoration: InputDecoration(
                                   contentPadding:
                                       EdgeInsets.only(top: 1.h, left: 1.w),
@@ -251,6 +259,9 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                               color: Colors.white,
                               height: 35.h,
                               child: TextField(
+                                onChanged: (value) {
+                                  mealId = value;
+                                },
                                 decoration: InputDecoration(
                                   contentPadding:
                                       EdgeInsets.only(top: 1.h, left: 1.w),
@@ -288,6 +299,9 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                               color: Colors.white,
                               height: 40.h,
                               child: TextField(
+                                onChanged: (value) {
+                                  mealDescription = value;
+                                },
                                 decoration: InputDecoration(
                                   contentPadding:
                                       EdgeInsets.only(top: 1.h, left: 1.w),
