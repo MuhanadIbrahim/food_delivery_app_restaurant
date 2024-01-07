@@ -6,6 +6,20 @@ class AddMealScrean extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return const AddMealScreanBody();
+  }
+}
+
+class AddMealScreanBody extends StatefulWidget {
+  const AddMealScreanBody({super.key});
+
+  @override
+  State<AddMealScreanBody> createState() => _AddMealScreanBodyState();
+}
+
+class _AddMealScreanBodyState extends State<AddMealScreanBody> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
       body: SingleChildScrollView(
