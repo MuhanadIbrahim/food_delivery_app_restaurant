@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/Flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery_app_restaurant/domain/restaurant.dart';
 import 'package:food_delivery_app_restaurant/presentation/blocs/add_meal/add_meal_bloc.dart';
+import 'package:food_delivery_app_restaurant/presentation/blocs/my_restaurant_bloc/my_restaurant_bloc_bloc.dart';
+import 'package:food_delivery_app_restaurant/presentation/blocs/my_restaurant_bloc/my_restaurant_bloc_bloc.dart';
+
+import '../../domain/meals.dart';
+import '../blocs/authentication/authentication_bloc.dart';
+import '../blocs/my_restaurant_bloc/my_restaurant_bloc_bloc.dart';
 
 class AddMealScreanBody extends StatefulWidget {
   const AddMealScreanBody({super.key});
@@ -71,26 +78,45 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                 SizedBox(
                   height: 15.h,
                 ),
-                Container(
-                  padding: EdgeInsets.all(10.r),
-                  height: 80.h,
-                  width: 340.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.r),
-                    color: Colors.white,
-                    border: Border.all(
-                      width: 2,
-                      color: Colors.black,
+                GestureDetector(
+                  onTap: () {
+                    MyMeals meal = MyMeals.empty;
+                    meal = meal.copyWith(
+                        name: mealName,
+                        id: mealId,
+                        picture: mealPicture,
+                        price: mealPrice,
+                        description: mealDescription);
+                    setState(() {
+                      context.read<AddMealBloc>().add(AddMealEvent(
+                          addMeal: meal,
+                          restaurant: context
+                              .read<MyRestaurantBlocBloc>()
+                              .GetMyRestaurant));
+                    });
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(10.r),
+                    height: 80.h,
+                    width: 340.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.r),
+                      color: Colors.white,
+                      border: Border.all(
+                        width: 2,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Add new meal here',
-                        style: TextStyle(fontSize: 25.sp, color: Colors.black),
-                      )
-                    ],
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Add new meal here',
+                          style:
+                              TextStyle(fontSize: 25.sp, color: Colors.black),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
