@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 class MyMeals extends Equatable {
   final String name;
 
-  final double price;
+  final String price;
   String? picture;
   final String id;
   final String description;
@@ -17,12 +17,12 @@ class MyMeals extends Equatable {
       this.picture});
 
   static final empty =
-      MyMeals(name: '', price: 0, id: '', description: '', picture: '');
+      MyMeals(name: '', price: '', id: '', description: '', picture: '');
 
   MyMeals copyWith({
     String? name,
     bool? available,
-    double? price,
+    String? price,
     String? picture,
     String? id,
     String? description,
@@ -41,7 +41,7 @@ class MyMeals extends Equatable {
         id: data['id'] as String,
         name: data['name'] as String,
         description: data['description'] as String,
-        price: data['price'] as double,
+        price: data['price'] as String,
         picture: data['picture'] as String);
   }
 

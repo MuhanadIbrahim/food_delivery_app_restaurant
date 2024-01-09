@@ -19,7 +19,7 @@ class AddMealScreanBody extends StatefulWidget {
 
 class _AddMealScreanBodyState extends State<AddMealScreanBody> {
   String? mealName;
-  double? mealPrice;
+  String? mealPrice;
   String? mealPicture;
   String? mealId;
   String? mealDescription;
@@ -216,7 +216,7 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                               height: 35.h,
                               child: TextField(
                                 onChanged: (value) {
-                                  mealPrice = value as double?;
+                                  mealPrice = value ;
                                 },
                                 decoration: InputDecoration(
                                   contentPadding:
