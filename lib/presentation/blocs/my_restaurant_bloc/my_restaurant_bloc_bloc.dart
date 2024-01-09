@@ -20,7 +20,9 @@ class MyRestaurantBlocBloc
       try {
         MyRestaurant myRestaurant =
             await _restaurantRepository.getMyRestaurant(event.myRestaurantId);
+
         emit(MyRestaurantBlocState.success(myRestaurant));
+         myRestaurant;
       } catch (e) {
         log(e.toString());
         emit(const MyRestaurantBlocState.failure());
