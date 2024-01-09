@@ -81,7 +81,7 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                 BlocBuilder<MyRestaurantBlocBloc, MyRestaurantBlocState>(
                   builder: (context, state) {
                     return GestureDetector(
-                      onTap: () {
+                      onTap: () async {
                         final User? user = FirebaseAuth.instance.currentUser;
                         final String uid = user!.uid;
                         print("User UID: $uid");
@@ -95,14 +95,13 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                             picture: mealPicture,
                             price: mealPrice,
                             description: mealDescription);
-                        setState(() async {
-                          MyRestaurant myRestaurant = await context
-                              .read<AuthenticationBloc>()
-                              .restaurantRepository
-                              .getMyRestaurant(uid);
-                          context.read<AddMealBloc>().add(AddMealEvent(
-                              addMeal: meal, restaurant: myRestaurant));
-                        });
+                        MyRestaurant myRestaurant = await context
+                            .read<AuthenticationBloc>()
+                            .restaurantRepository
+                            .getMyRestaurant(uid);
+                        context.read<AddMealBloc>().add(AddMealEvent(
+                            addMeal: meal, restaurant: myRestaurant));
+                        setState(() {});
                       },
                       child: Container(
                         padding: EdgeInsets.all(10.r),

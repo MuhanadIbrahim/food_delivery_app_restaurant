@@ -108,7 +108,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
     //   }
     // }
     try {
-       await FirebaseAuth.instance
+      await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       // var emailVerified = userCredential.user!.emailVerified;
       // if (!emailVerified) {

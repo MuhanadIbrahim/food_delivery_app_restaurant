@@ -16,12 +16,8 @@ class MyMeals extends Equatable {
       required this.description,
       this.picture});
 
-  static final empty = MyMeals(
-    name: '',
-    price: 0,
-    id: '',
-    description: '',
-  );
+  static final empty =
+      MyMeals(name: '', price: 0, id: '', description: '', picture: '');
 
   MyMeals copyWith({
     String? name,
@@ -48,6 +44,17 @@ class MyMeals extends Equatable {
         price: data['price'] as double,
         picture: data['picture'] as String);
   }
+
+  Map<String, Object?> toDocument(Object? data) {
+    return {
+      'id': id,
+      'price': price,
+      'name': name,
+      'description': description,
+      'picture': picture
+    };
+  }
+
   bool get isEmpty => this == MyMeals.empty;
 
   bool get isNotEmpty => this != MyMeals.empty;
