@@ -18,9 +18,9 @@ class MealAdding extends MealState {
 }
 
 class MealAddedSuccessfluy extends MealState {
-  final MyMeals addMeal;
+  var addMeal;
 
-  const MealAddedSuccessfluy(this.addMeal);
+  MealAddedSuccessfluy(this.addMeal);
   @override
   List<Object> get props => [addMeal];
 }

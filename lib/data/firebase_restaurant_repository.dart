@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -341,7 +342,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
   }
 
   @override
-  Future<MyMeals> addMeal(MyMeals meal, MyRestaurant restaurant) async {
+  Future<bool> addMeal(MyMeals meal, MyRestaurant restaurant) async {
     try {
       final CollectionReference mealsCollection = FirebaseFirestore.instance
           .collection('restaurants')
@@ -356,10 +357,11 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
         // ... other meal details
       });
 
-      final querySnapshot = await mealsCollection.get();
-      MyMeals myMeal = querySnapshot.docs
-          .map((doc) => MyMeals.fromMap(doc.data())) as MyMeals;
-      return myMeal;
+      // final querySnapshot = await mealsCollection.get();
+      // MyMeals myMeal = querySnapshot.docs
+      //     .map((doc) => MyMeals.fromMap(doc.data())) as MyMeals;
+      // return myMeal;
+      return true;
     } catch (e) {
       rethrow;
       // Handle errors here

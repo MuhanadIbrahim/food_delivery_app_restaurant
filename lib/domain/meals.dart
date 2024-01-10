@@ -5,7 +5,7 @@ class MyMeals extends Equatable {
   final String name;
 
   final String price;
-  String? picture;
+  final String picture;
   final String id;
   final String description;
 
@@ -14,7 +14,7 @@ class MyMeals extends Equatable {
       required this.price,
       required this.id,
       required this.description,
-      this.picture});
+      required this.picture});
 
   static final empty =
       MyMeals(name: '', price: '', id: '', description: '', picture: '');
@@ -28,11 +28,11 @@ class MyMeals extends Equatable {
     String? description,
   }) {
     return MyMeals(
-      name: name ?? this.name,
-      price: price ?? this.price,
-      id: id ?? this.id,
-      description: description ?? this.description,
-    );
+        name: name ?? this.name,
+        price: price ?? this.price,
+        id: id ?? this.id,
+        description: description ?? this.description,
+        picture: picture ?? this.description);
   }
 
   factory MyMeals.fromMap(Object? object) {
@@ -63,7 +63,7 @@ class MyMeals extends Equatable {
   List<Object?> get props => [
         name,
         price,
-        picture ?? '',
+        picture,
         id,
         description,
       ];
