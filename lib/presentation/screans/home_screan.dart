@@ -1,9 +1,78 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/Flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery_app_restaurant/constanints.dart';
+import 'package:food_delivery_app_restaurant/domain/meals.dart';
 
-class HomeScrean extends StatelessWidget {
+import '../../domain/restaurant.dart';
+import '../blocs/authentication/authentication_bloc.dart';
+import '../blocs/my_restaurant_bloc/my_restaurant_bloc_bloc.dart';
+
+class HomeScrean extends StatefulWidget {
   const HomeScrean({super.key});
+
+  @override
+  State<HomeScrean> createState() => _HomeScreanState();
+}
+
+class _HomeScreanState extends State<HomeScrean> {
+  @override
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => MyRestaurantBlocBloc(
+          myRestaurantRepository:
+              context.read<AuthenticationBloc>().restaurantRepository),
+      child: const HomeScreanBody(),
+    );
+  }
+}
+
+class HomeScreanBody extends StatefulWidget {
+  const HomeScreanBody({super.key});
+
+  @override
+  State<HomeScreanBody> createState() => _HomeScreanBodyState();
+}
+
+class _HomeScreanBodyState extends State<HomeScreanBody> {
+  List<MyMeals> allMeals = [];
+  void initState() {
+    super.initState();
+
+    final User? user = FirebaseAuth.instance.currentUser;
+    final String uid = user!.uid;
+    print("User UID: $uid");
+
+    context
+        .read<MyRestaurantBlocBloc>()
+        .add(GetMyRestaurant(myRestaurantId: uid));
+
+    // Fetch data using a FutureBuilder or a separate method
+    _fetchData();
+  }
+
+  Future<void> _fetchData() async {
+    try {
+      final User? user = FirebaseAuth.instance.currentUser;
+      final String uid = user!.uid;
+      MyRestaurant myRestaurant = await context
+          .read<AuthenticationBloc>()
+          .restaurantRepository
+          .getMyRestaurant(uid);
+
+      allMeals = await context
+          .read<AuthenticationBloc>()
+          .restaurantRepository
+          .getAllMeals(myRestaurant);
+
+      setState(() {}); // Trigger a rebuild after data is fetched
+    } catch (error) {
+      // Handle errors appropriately
+      print("Error fetching data: $error");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -257,7 +326,7 @@ class HomeScrean extends StatelessWidget {
                               height: 5.h,
                             ),
                             Text(
-                              'Meals Request',
+                              'List Of Meals',
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 13.sp,
@@ -267,7 +336,7 @@ class HomeScrean extends StatelessWidget {
                               height: 8.h,
                             ),
                             Text(
-                              '23',
+                              '${allMeals.length}',
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 13.sp,
@@ -334,7 +403,7 @@ class HomeScrean extends StatelessWidget {
                                 height: 8.h,
                               ),
                               Text(
-                                '23 meals in the menu',
+                                '${allMeals.length} in the menu',
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 13.sp,

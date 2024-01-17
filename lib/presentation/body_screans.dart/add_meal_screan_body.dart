@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_delivery_app_restaurant/presentation/blocs/add_meal/add_meal_bloc.dart';
 import 'package:food_delivery_app_restaurant/presentation/blocs/my_restaurant_bloc/my_restaurant_bloc_bloc.dart';
 
+import '../../constanints.dart';
+import '../../data/firebase_restaurant_repository.dart';
 import '../../domain/meals.dart';
 import '../../domain/restaurant.dart';
 import '../blocs/authentication/authentication_bloc.dart';
@@ -25,6 +28,7 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
   String? mealId;
   String? mealDescription;
   GlobalKey<FormState> formkey = GlobalKey();
+  FirebaseRestaurantRepository? repository;
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +111,8 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                             context.read<AddMealBloc>().add(AddMealEvent(
                                 addMeal: meal, restaurant: myRestaurant));
                             setState(() {});
+                            print(
+                                '=======================================${await context.read<AuthenticationBloc>().restaurantRepository.getAllMeals(myRestaurant)}');
                           }
                         },
                         child: BlocBuilder<AddMealBloc, MealState>(
@@ -136,6 +142,7 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                               );
                             }
                             if (state is MealAddedSuccessfluy) {
+                            
                               // Example with fluttertoast:
                               Fluttertoast.showToast(
                                 msg: "Your Meal Added Successfluy",
@@ -148,6 +155,7 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                               );
                             }
                             if (state is MealAddFailed) {
+                            
                               // Example with fluttertoast:
                               Fluttertoast.showToast(
                                 msg: "Add Your Meal Failed",
