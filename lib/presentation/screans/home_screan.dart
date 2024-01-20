@@ -38,6 +38,7 @@ class HomeScreanBody extends StatefulWidget {
 
 class _HomeScreanBodyState extends State<HomeScreanBody> {
   List<MyMeals> allMeals = [];
+  String restaurantName = '';
   void initState() {
     super.initState();
 
@@ -61,6 +62,7 @@ class _HomeScreanBodyState extends State<HomeScreanBody> {
           .read<AuthenticationBloc>()
           .restaurantRepository
           .getMyRestaurant(uid);
+      restaurantName = myRestaurant.name;
 
       allMeals = await context
           .read<AuthenticationBloc>()
@@ -88,37 +90,41 @@ class _HomeScreanBodyState extends State<HomeScreanBody> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    SizedBox(
-                      height: 40.h,
-                      width: 40.w,
-                      child: Image.asset(
-                        'assets/restaurant_logo.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    Text(
-                      'restaurant name',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w500),
-                    )
-                  ],
+                BlocBuilder<MyRestaurantBlocBloc, MyRestaurantBlocState>(
+                  builder: (context, state) {
+                    return Row(
+                      children: [
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        SizedBox(
+                          height: 40.h,
+                          width: 40.w,
+                          child: Image.asset(
+                            'assets/restaurant_logo.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        Text(
+                          '$restaurantName restaurant',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w500),
+                        )
+                      ],
+                    );
+                  },
                 ),
                 DropdownButton(
                     dropdownColor: Colors.black, items: [], onChanged: null),
               ],
             ),
           ),
-          Container(
+          SizedBox(
               width: double.infinity,
               child: Divider(
                 color: Colors.black,
@@ -163,7 +169,7 @@ class _HomeScreanBodyState extends State<HomeScreanBody> {
                           fontWeight: FontWeight.w500),
                     ),
                     IconButton(
-                      icon: Icon(Icons.arrow_downward, color: Colors.black),
+                      icon: const Icon(Icons.arrow_downward, color: Colors.black),
                       onPressed: () {
                         // Add your onPressed functionality here
                       },
@@ -220,7 +226,7 @@ class _HomeScreanBodyState extends State<HomeScreanBody> {
                           fontWeight: FontWeight.w500),
                     ),
                     IconButton(
-                      icon: Icon(Icons.arrow_upward, color: Colors.black),
+                      icon: const Icon(Icons.arrow_upward, color: Colors.black),
                       onPressed: () {
                         // Add your onPressed functionality here
                       },
@@ -296,7 +302,7 @@ class _HomeScreanBodyState extends State<HomeScreanBody> {
                           ),
                           IconButton(
                             icon:
-                                Icon(Icons.arrow_downward, color: Colors.black),
+                                const Icon(Icons.arrow_downward, color: Colors.black),
                             onPressed: () {
                               // Add your onPressed functionality here
                             },

@@ -10,8 +10,13 @@ sealed class MealEvent extends Equatable {
 class AddMealEvent extends MealEvent {
   final MyMeals addMeal;
   final MyRestaurant restaurant;
-   const AddMealEvent({ required this.addMeal,required this.restaurant,} );
+  const AddMealEvent({
+    required this.addMeal,
+    required this.restaurant,
+  });
 
   @override
   List<Object> get props => [addMeal, restaurant];
 }
+
+
