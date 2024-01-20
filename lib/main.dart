@@ -11,6 +11,7 @@ import 'package:food_delivery_app_restaurant/presentation/blocs/sign_in/sign_in_
 import 'package:food_delivery_app_restaurant/presentation/blocs/sign_up/sign_up_bloc.dart';
 import 'package:food_delivery_app_restaurant/presentation/screans/add_meals_screan.dart';
 import 'package:food_delivery_app_restaurant/presentation/screans/home_screan.dart';
+import 'package:food_delivery_app_restaurant/presentation/screans/list_meals_screan.dart';
 import 'package:food_delivery_app_restaurant/presentation/screans/sign_in_screan.dart';
 import 'package:food_delivery_app_restaurant/presentation/screans/sign_up_screan.dart';
 import 'package:food_delivery_app_restaurant/simple_bloc_observer.dart';
@@ -67,7 +68,8 @@ class _MyAppState extends State<MyApp> {
               ksignUpScrean: (context) => const SignUpScrean(),
               ksignInScrean: (context) => SignInScrean(),
               khomeScrean: (context) => const HomeScrean(),
-              kaddMealsScrean: (context) => const AddMealScrean()
+              kaddMealsScrean: (context) => const AddMealScrean(),
+              klistmealsScrean: (context) => const ListMealsScrean()
             },
 
             debugShowCheckedModeBanner: false,
