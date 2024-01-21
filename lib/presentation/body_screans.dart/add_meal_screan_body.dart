@@ -139,7 +139,6 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                               );
                             }
                             if (state is MealAddedSuccessfluy) {
-                            
                               // Example with fluttertoast:
                               Fluttertoast.showToast(
                                 msg: "Your Meal Added Successfluy",
@@ -152,7 +151,6 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                               );
                             }
                             if (state is MealAddFailed) {
-                            
                               // Example with fluttertoast:
                               Fluttertoast.showToast(
                                 msg: "Add Your Meal Failed",
@@ -284,6 +282,9 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                                 color: Colors.white,
                                 height: 35.h,
                                 child: TextFormField(
+                                  keyboardType:
+                                      const TextInputType.numberWithOptions(
+                                          decimal: true),
                                   validator: (value) {
                                     if (value!.isEmpty) {
                                       return 'please Enter price';
@@ -291,7 +292,8 @@ class _AddMealScreanBodyState extends State<AddMealScreanBody> {
                                     return null;
                                   },
                                   onChanged: (value) {
-                                    mealPrice = value;
+                                    mealPrice =
+                                        double.tryParse(value).toString();
                                   },
                                   decoration: InputDecoration(
                                     contentPadding:
