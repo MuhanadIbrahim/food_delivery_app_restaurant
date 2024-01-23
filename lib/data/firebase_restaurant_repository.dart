@@ -345,7 +345,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
   Future<bool> addMeal(MyMeals meal, MyRestaurant restaurant) async {
     try {
       final CollectionReference mealsCollection = FirebaseFirestore.instance
-          .collection('restaurants')
+          .collection('restaurant')
           .doc(restaurant.id)
           .collection('meals');
       await mealsCollection.add({
@@ -372,7 +372,7 @@ class FirebaseRestaurantRepository implements RestaurantRepository {
   Future<List<MyMeals>> getAllMeals(MyRestaurant restaurant) async {
     try {
       final CollectionReference mealsCollection = FirebaseFirestore.instance
-          .collection('restaurants')
+          .collection('restaurant')
           .doc(restaurant.id)
           .collection('meals');
 
