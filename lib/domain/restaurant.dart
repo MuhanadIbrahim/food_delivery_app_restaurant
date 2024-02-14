@@ -10,24 +10,28 @@ class MyRestaurant extends Equatable {
   final String email;
   String? picture;
   final String id;
+  final String description;
 
   MyRestaurant(
       {required this.name,
       required this.phoneNumber,
+      required this.description,
       required this.email,
       required this.id,
       this.picture});
 
   static final empty =
-      MyRestaurant(id: '', name: '', phoneNumber: 0, email: '', picture: '');
+      MyRestaurant(id: '', name: '', phoneNumber: 0, email: '', picture: '',description: '');
 
   MyRestaurant copyWith(
       {String? name,
       int? phoneNumber,
       String? email,
       String? picture,
+      String? description,
       String? id}) {
     return MyRestaurant(
+      description: description ?? this.description,
         id: id ?? this.id,
         name: name ?? this.name,
         phoneNumber: phoneNumber ?? this.phoneNumber,
@@ -41,6 +45,7 @@ class MyRestaurant extends Equatable {
 
   MyRestaurantEntity toEntity() {
     return MyRestaurantEntity(
+      description: description,
         email: email,
         name: name,
         phoneNumber: phoneNumber,
@@ -50,13 +55,13 @@ class MyRestaurant extends Equatable {
 
   static MyRestaurant fromEntity(MyRestaurantEntity entity) {
     return MyRestaurant(
+      description: entity.description,
         id: entity.id,
         name: entity.name,
         phoneNumber: entity.phoneNumber,
         email: entity.email,
         picture: entity.picture);
   }
-
 
   // Future<void> addMeal(MyMeals meal) async {
   //       try {
@@ -74,6 +79,5 @@ class MyRestaurant extends Equatable {
   //       }
   //   }
   @override
-  
-  List<Object?> get props => [id, name, phoneNumber, email, picture ?? ''];
+  List<Object?> get props => [description,id, name, phoneNumber, email, picture ?? ''];
 }

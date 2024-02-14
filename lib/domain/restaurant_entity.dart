@@ -6,8 +6,10 @@ class MyRestaurantEntity extends Equatable {
   final String email;
   final String? picture;
   final String id;
+  final String description;
 
   const MyRestaurantEntity({
+    required this.description,
     required this.name,
     required this.phoneNumber,
     required this.email,
@@ -17,6 +19,7 @@ class MyRestaurantEntity extends Equatable {
 
   Map<String, Object?> toDocument() {
     return {
+      'description': description,
       'id': id,
       'email': email,
       'name': name,
@@ -32,11 +35,13 @@ class MyRestaurantEntity extends Equatable {
       phoneNumber: doc['phoneNumber'] as int,
       email: doc['email'] as String,
       picture: doc['picture'] as String?,
+      description: doc['description'] as String,
     );
   }
 
   @override
-  List<Object?> get props => [id, name, phoneNumber, email, picture];
+  List<Object?> get props =>
+      [id, name, phoneNumber, email, picture, description];
 
   @override
   String toString() {
