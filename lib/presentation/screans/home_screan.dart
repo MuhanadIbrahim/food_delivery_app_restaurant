@@ -79,11 +79,13 @@ class _HomeScreanBodyState extends State<HomeScreanBody> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
-      body: allMeals.isEmpty
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : Column(
+       body:
+      // allMeals.isEmpty
+      //     ? const Center(
+      //         child: CircularProgressIndicator(),
+      //       )
+      //     :
+       Column(
               children: [
                 SizedBox(
                   height: 28.h,

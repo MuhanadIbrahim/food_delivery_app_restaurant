@@ -20,6 +20,8 @@ class _SignUpBodyScreanState extends State<SignUpBodyScrean> {
 
   String? name;
 
+  String? description;
+
   GlobalKey<FormState> formkey = GlobalKey();
 
   bool signInRequired = false;
@@ -139,6 +141,41 @@ class _SignUpBodyScreanState extends State<SignUpBodyScrean> {
                           height: 28.h,
                         ),
                         Text(
+                          'Full description ',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: const Color(0xFF202020),
+                            fontSize: 14.sp,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                            height: 0.12.h,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 22.h,
+                        ),
+                        TextFormField(
+                          style: TextStyle(color: Colors.black),
+                          onChanged: (value) {
+                            description = value;
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'please fill this field';
+                            } else if (value.length > 100) {
+                              return 'description too long';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'Enter your full description',
+                          ),
+                        ),
+                        SizedBox(
+                          height: 28.h,
+                        ),
+                        Text(
                           'Email ',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -209,7 +246,9 @@ class _SignUpBodyScreanState extends State<SignUpBodyScrean> {
                                     MyRestaurant myRestaurant =
                                         MyRestaurant.empty;
                                     myRestaurant = myRestaurant.copyWith(
-                                        email: email, name: name);
+                                        description: description,
+                                        email: email,
+                                        name: name);
                                     setState(() {
                                       context.read<SignUpBloc>().add(
                                           SignUpRequired(myRestaurant,
