@@ -22,6 +22,10 @@ class _SignUpBodyScreanState extends State<SignUpBodyScrean> {
 
   String? description;
 
+  int? phoneNumber;
+
+  String? picture;
+
   GlobalKey<FormState> formkey = GlobalKey();
 
   bool signInRequired = false;
@@ -141,6 +145,75 @@ class _SignUpBodyScreanState extends State<SignUpBodyScrean> {
                           height: 28.h,
                         ),
                         Text(
+                          'Full Image URL ',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: const Color(0xFF202020),
+                            fontSize: 14.sp,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                            height: 0.12.h,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 22.h,
+                        ),
+                        TextFormField(
+                          style: TextStyle(color: Colors.black),
+                          onChanged: (value) {
+                            picture = value;
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'please fill this field';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'Enter image URL',
+                          ),
+                        ),
+                        SizedBox(
+                          height: 22.h,
+                        ),
+                        Text(
+                          'Full Phone Number ',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: const Color(0xFF202020),
+                            fontSize: 14.sp,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                            height: 0.12.h,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 22.h,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.number,
+                          style: TextStyle(color: Colors.black),
+                          onChanged: (value) {
+                            phoneNumber = value as int;
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'please fill this field';
+                            } else if (value.length > 15) {
+                              return 'phone number too long';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'Enter your phone number',
+                          ),
+                        ),
+                        SizedBox(
+                          height: 28.h,
+                        ),
+                        Text(
                           'Full description ',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -246,6 +319,8 @@ class _SignUpBodyScreanState extends State<SignUpBodyScrean> {
                                     MyRestaurant myRestaurant =
                                         MyRestaurant.empty;
                                     myRestaurant = myRestaurant.copyWith(
+                                        picture: picture,
+                                        phoneNumber: phoneNumber,
                                         description: description,
                                         email: email,
                                         name: name);
