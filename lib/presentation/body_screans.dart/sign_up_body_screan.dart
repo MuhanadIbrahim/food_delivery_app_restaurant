@@ -195,7 +195,7 @@ class _SignUpBodyScreanState extends State<SignUpBodyScrean> {
                           keyboardType: TextInputType.number,
                           style: TextStyle(color: Colors.black),
                           onChanged: (value) {
-                            phoneNumber = value as int;
+                            phoneNumber = int.parse(value);
                           },
                           validator: (value) {
                             if (value!.isEmpty) {
